@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previous Year Papers - PASS ME SENPAI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" id="home-link">
+            <h1>PASS ME SENPAI</h1>
+        </a>
+    </header>
+    <main>
+        <h2>Previous Year Question Papers</h2>
+        <div id="button-container" class="grid">
+            <!-- Buttons will be dynamically added here via JavaScript -->
+        </div>
+    </main>
+    <script>
+        // Extract the subject code from the query string
+        const urlParams = new URLSearchParams(window.location.search);
+        const subjectCode = urlParams.get('subject');
+
+        // Sample Google Drive links for demonstration
+        const driveLinks = {
+            "CSE101": {
+                syllabus: "https://drive.google.com/example_syllabus_CSE101",
+                2023: "https://drive.google.com/example_2023_CSE101",
+                2024: "https://drive.google.com/example_2024_CSE101"
+            },
+            "CSE202": {
+                syllabus: "https://drive.google.com/example_syllabus_CSE202",
+                2023: "https://drive.google.com/example_2023_CSE202",
+                2024: "https://drive.google.com/example_2024_CSE202"
+            }
+            // Add links for other subjects here
+        };
+
+        const buttonContainer = document.getElementById("button-container");
+
+        if (driveLinks[subjectCode]) {
+            ["syllabus", "2023", "2024"].forEach(type => {
+                const button = document.createElement("a");
+                button.href = driveLinks[subjectCode][type];
+                button.target = "_blank";
+                button.innerText = type.charAt(0).toUpperCase() + type.slice(1);
+                button.classList.add("grid-item"); // Apply button styling
+                buttonContainer.appendChild(button);
+            });
+
+            // Add a back button
+            const backButton = document.createElement("a");
+            backButton.href = "subjects.html";
+            backButton.innerText = "Back";
+            backButton.classList.add("grid-item");
+            buttonContainer.appendChild(backButton);
+        } else {
+            buttonContainer.innerHTML = "<p>No links available for this subject.</p>";
+        }
+    </script>
+</body>
+</html>

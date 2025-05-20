@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PDF Viewer - PASS ME SENPAI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h2 id="subject-heading">Loading...</h2>
+  <div class="grid" id="pdf-list"></div>
+  <iframe id="pdf-viewer" width="100%" height="600px" style="margin-top:20px; display:none;"></iframe>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const subject = urlParams.get("subject");
+    document.getElementById("subject-heading").innerText = `PYQs - ${subject}`;
+
+    const pdfList = {
+      "MATRIX ALGEBRA AND CALCULUS": [
+        { name: "Dec 2023", url: "https://drive.google.com/file/d/1KJsa2xyzABC/view?usp=sharing" },
+        { name: "June 2023", url: "https://drive.google.com/file/d/1ZJasq456XYZ/view?usp=sharing" }
+      ],
+      "APPLIED CHEMISTRY": [
+        { name: "2022 PYQ", url: "https://drive.google.com/file/d/1X456abc/view?usp=sharing" }
+      ]
+      // Add more subjects + PDFs
+    };
+
+    const viewer = document.getElementById("pdf-viewer");
+    const grid = document.getElementById("pdf-list");
+
+    const showPDF = (driveViewLink) => {
+      const fileId = driveViewLink.match(/\/d\/(.*?)\//)[1];
+      viewer.src = `https://drive.google.com/file/d/${fileId}/preview`;
+      viewer.style.display = "block";
+    };
+
+    const files = pdfList[subject];
+    if (files) {
+      files.forEach(pdf => {
+        const div = document.createElement("div");
+        div.className = "grid-item";
+        div.innerText = pdf.name;
+        div.style.cursor = "pointer";
+        div.onclick = () => showPDF(pdf.url);
+        grid.appendChild(div);
+      });
+    } else {
+      grid.innerHTML = "<p>No PDFs available.</p>";
+    }
+  </script>
+</body>
+</html>

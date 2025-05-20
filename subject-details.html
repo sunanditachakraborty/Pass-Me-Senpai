@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Resources - PASS ME SENPAI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" id="home-link">
+            <h1>PASS ME SENPAI</h1>
+        </a>
+    </header>
+
+    <main>
+        <h2 id="subject-title">Loading...</h2>
+        <div class="grid" id="resource-list"></div>
+        <a href="#" id="back-button" class="grid-item">Back</a>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const year = urlParams.get("year");
+            const branch = urlParams.get("branch");
+            const subjectCode = urlParams.get("subject");
+            const subjectTitle = document.getElementById("subject-title");
+            const resourceList = document.getElementById("resource-list");
+            const backButton = document.getElementById("back-button");
+
+            subjectTitle.innerText = `${branch} - ${subjectCode}`;
+
+            // Define Google Drive links for PYQs and Notes
+            const driveLinks = {
+  "MATRIX ALGEBRA AND CALCULUS": { "pyqs": "1ST/matrix.html?subject=MATRIX ALGEBRA AND CALCULUS", "notes": "/comingsoon.html" },
+  "APPLIED CHEMISTRY": { "pyqs": "1ST/applied_chem.html?subject=APPLIED CHEMISTRY", "notes": "/comingsoon.html" },
+  "ENGINEERING PHYSICS": { "pyqs": "1ST/engi_phy.html?subject=ENGINEERING PHYSICS", "notes": "/comingsoon.html" },
+  "DATA STRUCTURES USING C": { "pyqs": "1ST/data_structures_C.html?subject=DATA STRUCTURES USING C", "notes": "/comingsoon.html" },
+  "COMMUNICATIVE ENGLISH": { "pyqs": "1ST/communicative_eng.html?subject=COMMUNICATIVE ENGLISH", "notes": "/comingsoon.html" },
+  "FUNDAMENTALS OF ELECTRICAL AND ELECTRONICS ENGINEERING": { "pyqs": "1ST/fundamentals_of_elec.html?subject=FUNDAMENTALS OF ELECTRICAL AND ELECTRONICS ENGINEERING", "notes": "/comingsoon.html" },
+  "OBJECT ORIENTED PROGRAMMING": { "pyqs": "1ST/object_oriented.html?subject=OBJECT ORIENTED PROGRAMMING", "notes": "/comingsoon.html" },
+  "DISCRETE MATHEMATICS FOR COMPUTER SCIENCE": { "pyqs": "1ST/discrete_maths.html?subject=DISCRETE MATHEMATICS FOR COMPUTER SCIENCE", "notes": "/comingsoon.html" },
+  "PRINCIPLES OF ELECTRICAL ENGINEERING": { "pyqs": "1ST/principles_of_Elec.html?subject=PRINCIPLES OF ELECTRICAL ENGINEERING", "notes": "/comingsoon.html" },
+  "INTRODUCTORY TOPICS IN STATISTICS, PROBABILITY, AND CALCULUS": { "pyqs": "1ST/introductury.html?subject=INTRODUCTORY TOPICS IN STATISTICS, PROBABILITY, AND CALCULUS", "notes": "/comingsoon.html" },
+  "FUNDAMENTALS OF COMPUTER SCIENCE": { "pyqs": "1ST/fundamentals_cs.html?subject=FUNDAMENTALS OF COMPUTER SCIENCE", "notes": "/comingsoon.html" },
+  "CYBER SECURITY LANDSCAPE": { "pyqs": "1ST/cyber_sec.html?subject=CYBER SECURITY LANDSCAPE", "notes": "/comingsoon.html" },
+  "COMPUTATIONAL CHEMISTRY": { "pyqs": "1ST/computational_chem.html?subject=COMPUTATIONAL CHEMISTRY", "notes": "/comingsoon.html" },
+  "COMPUTATIONAL MATHEMATICS": { "pyqs": "1ST/computational_maths.html?subject=COMPUTATIONAL MATHEMATICS", "notes": "/comingsoon.html" },
+  "COMPUTER NETWORKS": { "pyqs": "1ST/computer_networks.html?subject=COMPUTER NETWORKS", "notes": "/comingsoon.html" },
+  "INTRODUCTION TO COMPUTER ARCHITECTURE": { "pyqs": "1ST/intro_computer_architecture.html?subject=INTRODUCTION TO COMPUTER ARCHITECTURE", "notes": "/comingsoon.html" },
+  "RELATIONAL DATABASE MANAGEMENT SYSTEMS": { "pyqs": "1ST/relational_dbms.html?subject=RELATIONAL DATABASE MANAGEMENT SYSTEMS", "notes": "/comingsoon.html" },
+  "STATISTICS AND PROBABILITY": { "pyqs": "1ST/statistics.html?subject=STATISTICS AND PROBABILITY", "notes": "/comingsoon.html" },
+  "BIOLOGY FOR ENGINEERS": { "pyqs": "1ST/biology.html?subject=BIOLOGY FOR ENGINEERS", "notes": "/comingsoon.html" },
+  "PYTHON PROGRAMMING": { "pyqs": "1ST/python_programming.html?subject=PYTHON PROGRAMMING", "notes": "/comingsoon.html" },
+  "COMPUTER ARCHITECTURE": { "pyqs": "1ST/computer_architecture.html?subject=COMPUTER ARCHITECTURE", "notes": "/comingsoon.html" },
+  "ELECTRICAL AND ELECTRONICS FOR COMPUTATIONAL THINKING": { "pyqs": "1ST/eect.html?subject=ELECTRICAL AND ELECTRONICS FOR COMPUTATIONAL THINKING", "notes": "/comingsoon.html" },
+  "PROBABILITY AND VECTOR SPACES": { "pyqs": "1ST/probability_vector.html?subject=PROBABILITY AND VECTOR SPACES", "notes": "/comingsoon.html" },
+  "BUSINESS COMMUNICATION AND VALUE SCIENCE - I": { "pyqs": "1ST/business_communication_1.html?subject=BUSINESS COMMUNICATION AND VALUE SCIENCE - I", "notes": "/comingsoon.html" },
+  "STATISTICAL METHODS AND MODELLING": { "pyqs": "1ST/statistical_methods.html?subject=STATISTICAL METHODS AND MODELLING", "notes": "/comingsoon.html" },
+  "BUSINESS COMMUNICATION AND VALUE SCIENCE - II": { "pyqs": "1ST/business_communication_2.html?subject=BUSINESS COMMUNICATION AND VALUE SCIENCE - II", "notes": "/comingsoon.html" },
+  "ENVIRONMENTAL SCIENCES": { "pyqs": "1ST/environmental_sciences.html?subject=ENVIRONMENTAL SCIENCES", "notes": "/comingsoon.html" },
+  "LINEAR ALGEBRA": { "pyqs": "1ST/linear_algebra.html?subject=LINEAR ALGEBRA", "notes": "/comingsoon.html" },
+  "DATA STRUCTURES AND ALGORITHMS": { "pyqs": "1ST/datastructures_algorithms.html?subject=DATA STRUCTURES AND ALGORITHMS", "notes": "/comingsoon.html" },
+  "FUNDAMENTALS OF ECONOMICS": { "pyqs": "1ST/fundamentals_economics.html?subject=FUNDAMENTALS OF ECONOMICS", "notes": "/comingsoon.html" },
+  "PRINCIPLES OF ELECTRONICS": { "pyqs": "1ST/principles_electronic.html?subject=PRINCIPLESS OF ELECTRONICS", "notes": "/comingsoon.html" },
+  "NETWORK SECURITY": { "pyqs": "1ST/ns.html?subject=NETWORK SECURITY", "notes": "/comingsoon.html" },
+  "COMPUTATIONAL PHYSICS": { "pyqs": "1ST/cp.html?subject=COMPUTATIONAL PHYSICS", "notes": "/comingsoon.html" },
+  "INTRODUCTION TO PYTHON PROGRAMMING": { "pyqs": "1ST/ipp.html?subject=INTRODUCTION TO PYTHON PROGRAMMING", "notes": "/comingsoon.html" },
+  "DATA STRUCTURES USING JAVA": { "pyqs": "1ST/dsj.html?subject=DATA STRUCTURES USING JAVA", "notes": "/comingsoon.html" },
+  "FUNDAMENTALS OF ARTIFICIAL INTELLIGENCE": { "pyqs": "1ST/fai.html?subject=FUNDAMENTALS OF ARTIFICIAL INTELLIGENCE", "notes": "/comingsoon.html" },
+}
+
+;
+
+            if (driveLinks[subjectCode]) {
+                ["pyqs", "notes"].forEach(type => {
+                    const button = document.createElement("a");
+                    button.href = driveLinks[subjectCode][type];
+                    button.target = "_blank";
+                    button.innerText = type.toUpperCase();
+                    button.classList.add("grid-item");
+                    resourceList.appendChild(button);
+                });
+            } else {
+                resourceList.innerHTML = "<p>COMING SOON.</p>";
+            }
+
+            // Back button redirects to subject selection
+            backButton.href = `subject-list.html?year=${year}&branch=${branch}`;
+        });
+    </script>
+</body>
+</html>

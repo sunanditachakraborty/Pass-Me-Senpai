@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Branch - PASS ME SENPAI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" id="home-link">
+            <h1>PASS ME SENPAI</h1>
+        </a>
+    </header>
+
+    <main>
+        <h2>Select Your Branch</h2>
+        <div class="grid" id="branch-list">
+            <a href="#" data-branch="CSE" class="grid-item">CSE</a>
+            <a href="#" data-branch="ECE" class="grid-item">ECE</a>
+        </div>
+        <a href="index.html" id="back-button" class="grid-item">Back</a>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const year = urlParams.get("year");
+
+            document.querySelectorAll("#branch-list a").forEach(button => {
+                button.addEventListener("click", function () {
+                    const branch = this.getAttribute("data-branch");
+
+                    // 1st Year → Go directly to subjects
+                    if (year == 1) {
+                        window.location.href = `subject-list.html?year=${year}&branch=${branch}`;
+                    } 
+                    // 2nd-4th Year → Go to specialization page
+                    else {
+                        window.location.href = `specialization.html?year=${year}&branch=${branch}`;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

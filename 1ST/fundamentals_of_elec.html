@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PYQs Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #121212;
+      color: #f0f0f0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 1.5rem;
+        color: #3b82f6;
+    }
+
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-container input {
+      width: 80%;
+      max-width: 500px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background-color: #1f1f1f;
+      color: white;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #1f1f1f;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .card iframe {
+      width: 100%;
+      height: 180px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card a {
+      size: 20px;
+      background-color: #3b82f6;
+      color: white;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 8px;
+    }
+
+    .card a:hover {
+      background-color: #2563eb;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Previous Year Questions (PYQs)</h1>
+  <h2>FUNDAMENTALS OF ELECTRICAL AND ELECTRONICS ENGINEERING</h2>
+  
+
+  <div class="search-container">
+    <input type="text" id="search" onkeyup="filterCards()" placeholder="Search by year or title...">
+  </div>
+
+  <div class="gallery" id="gallery">
+    <!-- Cards will be injected here by JavaScript -->
+  </div>
+
+  <script>
+    const pyqs = [
+      {
+        title: "JAN 2024",
+        pdfUrl: "https://drive.google.com/file/d/1FJAn83nGXIVdE5qedY0FnBrbSHZT8ngG/preview"  // Replace with actual Google Drive link
+      },
+      {
+        title: "DEC 2022",
+        pdfUrl: "https://drive.google.com/file/d/1h6ierSvaSEOpyzgTaJP8jLxRv5nQTH_E/preview" 
+      },
+      {
+        title: "JULY 2022",
+        pdfUrl: "https://drive.google.com/file/d/1Tt-h4d5-KFduA5BcxVLlFJ0dVbzri0sj/preview"
+      }
+      // Add more entries here
+    ];
+
+    const gallery = document.getElementById("gallery");
+
+    function loadCards() {
+      gallery.innerHTML = "";
+      pyqs.forEach((item) => {
+        gallery.innerHTML += `
+          <div class="card" onclick="openPdf('${item.pdfUrl}')">
+            <h3>${item.title}</h3>
+            <iframe src="${item.pdfUrl}" frameborder="0"></iframe>
+            <a href="${item.pdfUrl}" target="_blank">View PDF in Drive</a>
+          </div>
+        `;
+      });
+    }
+
+    function openPdf(pdfUrl) {
+      // Open the PDF directly inside an iframe on the page
+      window.open(pdfUrl, "_blank");
+    }
+
+    function filterCards() {
+      const input = document.getElementById("search").value.toLowerCase();
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach(card => {
+        const title = card.querySelector("h3").innerText.toLowerCase();
+        card.style.display = title.includes(input) ? "block" : "none";
+      });
+    }
+
+    loadCards();
+  </script>
+
+</body>
+</html>

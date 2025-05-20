@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Subject - PASS ME SENPAI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" id="home-link">
+            <h1>PASS ME SENPAI</h1>
+        </a>
+    </header>
+
+    <main>
+        <h2 id="selection-heading">Select Your Subject</h2>
+        <div class="grid" id="selection-list"></div>
+        <a href="#" id="back-button" class="grid-item">Back</a>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const year = urlParams.get("year");
+            const branch = urlParams.get("branch");
+            const specialization = urlParams.get("specialization");
+            const selectionList = document.getElementById("selection-list");
+            const backButton = document.getElementById("back-button");
+
+            const subjects = {
+               "CSE": {
+        1: [
+            "MATRIX ALGEBRA AND CALCULUS",
+            "APPLIED CHEMISTRY",
+            "ENGINEERING PHYSICS",
+            "DATA STRUCTURES USING C",
+            "COMMUNICATIVE ENGLISH",
+            "FUNDAMENTALS OF ELECTRICAL AND ELECTRONICS ENGINEERING",
+            "OBJECT ORIENTED PROGRAMMING",
+            "DISCRETE MATHEMATICS FOR COMPUTER SCIENCE",
+            "PRINCIPLES OF ELECTRICAL ENGINEERING",
+            "INTRODUCTORY TOPICS IN STATISTICS, PROBABILITY, AND CALCULUS",
+            "FUNDAMENTALS OF COMPUTER SCIENCE",
+            "CYBER SECURITY LANDSCAPE",
+            "COMPUTATIONAL CHEMISTRY",
+            "COMPUTATIONAL MATHEMATICS",
+            "COMPUTER NETWORKS",
+            "INTRODUCTION TO COMPUTER ARCHITECTURE",
+            "RELATIONAL DATABASE MANAGEMENT SYSTEMS",
+            "STATISTICS AND PROBABILITY",
+            "BIOLOGY FOR ENGINEERS",
+            "PYTHON PROGRAMMING",
+            "COMPUTER ARCHITECTURE",
+            "ELECTRICAL AND ELECTRONICS FOR COMPUTATIONAL THINKING",
+            "PROBABILITY AND VECTOR SPACES",
+            
+            "DATA STRUCTURES",
+        
+            "BUSINESS COMMUNICATION AND VALUE SCIENCE - I",
+            "BUSINESS COMMUNICATION AND VALUE SCIENCE - II",
+            "STATISTICAL METHODS AND MODELLING",
+            "ENVIRONMENTAL SCIENCES",
+            "LINEAR ALGEBRA",
+            "DATA STRUCTURES AND ALGORITHMS",
+            "FUNDAMENTALS OF ECONOMICS",
+            "PRINCIPLES OF ELECTRONICS",
+            "NETWORK SECURITY",
+            "COMPUTATIONAL PHYSICS",
+            "INTRODUCTION TO PYTHON PROGRAMMING",
+            "DATA STRUCTURES USING JAVA",
+            "FUNDAMENTALS OF ARTIFICIAL INTELLIGENCE"
+        ],
+                    2: {"CSBS":["COMPUTATIONAL STATISTICS", "COMPUTER ORGANIZATION & ARCHITECTURE", "FORMAL LANGUAGE AND AUTOMATA THEORY", "FOUNDATION OF MATHEMATICS – I", "INDIAN CONSTITUTION", "OBJECT ORIENTED PROGRAMMING", "SOFTWARE ENGINEERING", "DATABASE MANAGEMENT SYSTEMS", "DESIGN AND ANALYSIS OF ALGORITHMS", "DESIGN THINKING", "INTRODUCTION TO INNOVATION, IP MANAGEMENT & ENTREPRENEURSHIP", "MARKETING RESEARCH & MARKETING MANAGEMENT", "OPERATING SYSTEMS", "OPERATIONS RESEARCH"],
+                    "ISE": ["COMPUTER ORGANIZATION & ARCHITECTURE", "DATA STRUCTURES AND ALGORITHMS", "DATABASE MANAGEMENT SYSTEMS", "DESIGN AND ANALYSIS OF ALGORITHMS", "DESIGN THINKING", "DIGITAL ELECTRONICS", "DISCRETE MATHEMATICS AND GRAPH THEORY", "ECONOMICS FOR ENGINEERS", "FOUNDATION OF MATHEMATICS – I", "LINEAR ALGEBRA AND VECTOR SPACES", "OBJECT ORIENTED PROGRAMMING USING JAVA", "OPERATING SYSTEMS", "PRINCIPLES OF OPERATING SYSTEMS", "RELATIONAL DATABASE MANAGEMENT SYSTEM", "SOFTWARE ENGINEERING", "THEORY OF COMPUTATION", "ESSENTIALS OF DEEP LEARNING"],
+                    "AI": ["ARTIFICIAL INTELLIGENCE", "COMPUTER NETWORKS", "DATA ANALYTICS USING EXCEL", "DATA COMMUNICATION AND NETWORKS", "DATABASE MANAGEMENT SYSTEMS", "DESIGN AND ANALYSIS OF ALGORITHMS", "DIGITAL ELECTRONICS", "DISCRETE MATHEMATICS AND GRAPH THEORY", "ECONOMICS FOR ENGINEERS", "FOUNDATION OF MATHEMATICS – I", "LINEAR ALGEBRA AND VECTOR SPACES", "MACHINE LEARNING", "MATHEMATICS FOR COMPUTER SCIENCE", "OBJECT ORIENTED PROGRAMMING USING JAVA", "OPERATING SYSTEMS", "PRINCIPLES OF OPERATING SYSTEMS", "RELATIONAL DATABASE MANAGEMENT SYSTEM", "SENSOR TECHNOLOGIES", "SOFTWARE ENGINEERING", "THEORY OF COMPUTATION", "ESSENTIALS OF DEEP LEARNING"]
+                    , "AIML": ["APPLICATIONS OF AI", "ARTIFICIAL INTELLIGENCE", "CAUSAL REASONING", "DATA EXPLORATION AND PREPARATION", "DATABASE MANAGEMENT SYSTEMS", "DISCRETE MATHEMATICS AND GRAPH THEORY", "ESSENTIALS OF DATA WAREHOUSING AND DATA MINING", "FOUNDATION OF MATHEMATICS – I", "FUNDAMENTALS OF MACHINE LEARNING", "MACHINE LEARNING", "MATHEMATICS AND STATISTICS FOR MACHINE LEARNING", "NUMERICAL OPTIMISATION", "OPERATING SYSTEMS", "ENVIRONMENT AND ECOLOGY", "ESSENTIALS OF DEEP LEARNING"]
+                    , "AIDE": ["Cyber Security"],"CSE STAR":["C","D"],"CTIS":["E","F"],"CYBER SECURITY":["G","H"],"DATA SCIENCE":["E","F"],"IOT":["G","H"],"MACT":["I","J"],"SE":["K","L"]},
+                    3: { "AIML": ["Deep Learning", "NLP"], "AIDE": ["Data Science"], "CYBER": ["Ethical Hacking"] },
+                    4: { "AIML": ["AI Ethics"], "AIDE": ["Blockchain"], "CYBER": ["Pentesting"] }
+                },
+                "ECE": {
+                    1: ["ECE101", "ECE102"],
+                    2: ["ECE201", "ECE202"],
+                    3: ["ECE301", "ECE302"],
+                    4: ["ECE401", "ECE402"]
+                }
+            };
+
+            function createSubjectButton(subject) {
+                const button = document.createElement("a");
+                button.href = `subject-details.html?year=${year}&branch=${branch}&subject=${subject}`;
+                button.innerText = subject;
+                button.classList.add("grid-item");
+                selectionList.appendChild(button);
+            }
+
+            if (year == 1) {
+                subjects[branch][1].forEach(subject => createSubjectButton(subject));
+            } else if (subjects[branch][year] && subjects[branch][year][specialization]) {
+                subjects[branch][year][specialization].forEach(subject => createSubjectButton(subject));
+            }
+
+            backButton.href = year == 1 ? `subjects.html?year=${year}` : `specialization.html?year=${year}&branch=${branch}`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PASS ME SENPAI - CSE AIML PYQS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>PASS ME SENPAI</h1>
+        <p>All You Need to Passs</p>
+        <p>Your Ultimate Guide to Previous Year Question Papers</p>
+    </header>
+    <main>
+        <div class="hero-section">
+       
+        </div>
+        <h2>Select Your Year</h2>
+        <div class="grid">
+          <a href="subject-list.html?year=1&branch=CSE">1st Year</a>
+          <a href="specialization.html?year=2&branch=CSE">2nd Year</a>
+          <a href="specialization.html?year=3&branch=CSE">3rd Year</a>
+          <a href="specialization.html?year=4&branch=CSE">4th Year</a>
+          
+        </div>
+    </main>
+    <div class="info-note">
+        <p>📌 <strong>Note:</strong> Some subjects may include older PYQs. For best results, start with the latest ones.</p>
+        <p>📚 Notes and materials for other years are coming soon—stay tuned!</p>
+      </div>
+      
+   <!-- Support QR Widget -->
+<div id="customBMCWidget">
+    <div class="custom-bmc-button" onclick="toggleCustomBMCWidget()">
+      ☕
+      <div class="hover-message">Support PASS ME SENPAI! 🖤</div>
+    </div>
+    <div class="custom-bmc-popup" id="customBMCPopup">
+      <h3>SUPPORT PASS ME SENPAI</h3>
+      <p>Help us keep providing high-quality PYQs to students.</p>
+      <p><strong>"Buy me a coffee to fuel more PYQs!"</strong></p>
+      <div class="qr-container">
+        <img src="qr.jpg" alt="QR Code to support" class="qr-image" />
+        <p>Scan to Support</p>
+        <P>Every little bit helps! I'm a solo dev building this to help students pass with ease.</P>
+      </div>
+    </div>
+  </div>
+  
+    </div>
+  </div>
+  <script>
+    function toggleCustomBMCWidget() {
+      const popup = document.getElementById('customBMCPopup');
+      popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+    }
+  
+    // Optional: auto-close when clicking outside
+    window.addEventListener('click', function (e) {
+      const popup = document.getElementById('customBMCPopup');
+      const button = document.querySelector('.custom-bmc-button');
+      if (!popup.contains(e.target) && !button.contains(e.target)) {
+        popup.style.display = 'none';
+      }
+    });
+  </script>
+  
+  </div>
+</div>
+
+  
+</body>
+
+<footer style="
+  margin-top: 3rem;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #ccc;
+  border-top: 1px solid #333;
+">
+  <p>📬 Contact Us:  
+    <a href="mailto:passmesenpai@gmail.com" style="color: #ffffff; text-decoration: none;">
+      passmesenpai@gmail.com
+    </a>
+  </p>
+</footer>
+
+ 
+</html>  

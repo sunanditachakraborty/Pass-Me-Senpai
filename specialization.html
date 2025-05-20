@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Specialization - PASS ME SENPAI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" id="home-link">
+            <h1>PASS ME SENPAI</h1>
+        </a>
+    </header>
+
+    <main>
+        <h2>Select Your Specialization</h2>
+        <div class="grid" id="specialization-list"></div>
+        <a href="subjects.html" id="back-button" class="grid-item">Back</a>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const year = parseInt(urlParams.get("year"));
+            const branch = urlParams.get("branch");
+
+            const specializationList = document.getElementById("specialization-list");
+
+            // Unique Specializations for Each Year (CSE & ECE)
+            const specializations = {
+                "CSE": {
+                    2: ["ISE", "AI", "AIML", "AIDE", "CSBS", "CSE STAR", "CTIS", "CYBER SECURITY", "DATA SCIENCE", "IOT", "MACT", "SE"],
+                    3: ["ISE", "AI", "AIML", "AIDE", "CSBS", "CSE STAR", "CTIS", "CYBER SECURITY", "DATA SCIENCE", "IOT", "MACT", "SE"],
+                    4: ["ISE", "AI", "CTIS", "DATA SCIENCE", "IOT", "MACT", "SE"],
+                },
+                "ECE": {
+                    2: ["VLSI", "EMBEDDED SYSTEMS", "SIGNAL PROCESSING"],
+                    3: ["WIRELESS COMMUNICATION", "MICROELECTRONICS", "NANOTECHNOLOGY"],
+                    4: ["RADAR SYSTEMS", "SATELLITE COMMUNICATION", "BIOMEDICAL ENGINEERING"]
+                }
+            };
+
+            // Validate branch and year
+            if (specializations[branch] && specializations[branch][year]) {
+                specializations[branch][year].forEach(spec => {
+                    const button = document.createElement("a");
+                    button.href = `subject-list.html?year=${year}&branch=${branch}&specialization=${spec}`;
+                    button.innerText = spec;
+                    button.classList.add("grid-item");
+                    specializationList.appendChild(button);
+                });
+            } else {
+                specializationList.innerHTML = "<p>No specializations available for this year.</p>";
+            }
+
+            // Back button
+            document.getElementById("back-button").href = `subjects.html?year=${year}`;
+        });
+    </script>
+</body>
+</html>

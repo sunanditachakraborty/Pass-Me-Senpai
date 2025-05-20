@@ -1,0 +1,375 @@
+/* General */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #cccccc;
+    margin-top: 20px;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #999999;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto 40px;
+}
+
+.hero-section img {
+    max-width: 50%;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.grid a {
+    display: block;
+    padding: 15px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.grid a:hover {
+    transform: scale(1.05);
+    background-color: #444;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Full-page background */
+body {
+    font-family: 'Nunito', sans-serif;
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/* Semi-transparent overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Adjust transparency here (0.6 for 60% black overlay) */
+    z-index: -1;
+}
+
+/* Header styles */
+header h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #cccccc;
+    margin-top: 20px;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #999999;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px auto 40px;
+}
+
+.hero-section img {
+    max-width: 50%;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.grid a {
+    display: block;
+    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.grid a:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.grid-item {
+    display: block;
+    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+header a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Keep the same text color */
+}
+/* Container for everything */
+#customBMCWidget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  /* Floating button */
+  .custom-bmc-button {
+    width: 55px;
+    height: 55px;
+    background-color: #939393;
+    color: #000;
+    border-radius: 50%;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Popup styling */
+  .custom-bmc-popup {
+    display: none;
+    width: 320px;
+    background: #1f1f2f;
+    color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    animation: fadeInUp 0.3s ease;
+  }
+  
+  /* Animation */
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Container */
+#customBMCWidget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  /* Floating Button */
+  .custom-bmc-button {
+    width: 55px;
+    height: 55px;
+    background-color: #343434;
+    color: #000;
+    border-radius: 50%;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  /* Hover Effects */
+  .custom-bmc-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Tooltip Message */
+  .hover-message {
+    position: absolute;
+    right: 65px;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    font-weight: 600; /* <-- Bolder font */
+    padding: 8px 14px;
+    border-radius: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(0);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6); /* subtle highlight */
+  }
+  
+  
+  /* Show tooltip on hover */
+  .custom-bmc-button:hover .hover-message {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  
+  /* PAYMENT Popup */
+  .custom-bmc-popup {
+    display: none;
+    width: 320px;
+    background: #343434; 
+    color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    animation: fadeInUp 0.3s ease;
+  }
+  
+  /* Popup animation */
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Heading */
+  .custom-bmc-popup h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .custom-bmc-popup h3 span {
+    color: #ed0808;
+  }
+  
+  .custom-bmc-popup p {
+    font-size: 14px;
+    text-align: center;
+    margin: 8px 0;
+    color: #cfcfcf;
+  }
+  
+  /* QR container */
+  .qr-container {
+    background: #a0a0a0;
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    margin-top: 12px;
+  }
+  
+  .qr-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+  }
+  
+  .qr-container p {
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .hover-message::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: #fff;
+  }
+  .qr-image {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .qr-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  }
+  .info-note {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin: 20px auto;
+    max-width: 600px;
+    color: #ccc;
+    font-size: 0.9rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  
